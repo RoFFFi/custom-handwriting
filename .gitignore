@@ -27,3 +27,6 @@ output/
 research/.venv/
 research/**/__pycache__/
 research/**/.ipynb_checkpoints/
+
+# Real handwriting pages (personal, never committed)
+data/

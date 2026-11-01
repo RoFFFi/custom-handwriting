@@ -66,6 +66,30 @@ you can compare two versions of the code on identical randomness.
 
 **Decision.** `synth.layout.Box` is a tree (rows, columns, glyphs, gaps), not a flat string.
 
+**Amended by D6:** the box tree describes the shape of one unit (a word, an equation); placing units on the page happens one at a time.
+
 **Why.** Math is on the roadmap. Fractions, exponents, square roots and aligned equations
 are boxes inside boxes (the model TeX uses). Text is just the simple case of the same tree,
 so math becomes new box kinds and new layout rules instead of a second engine.
+
+---
+
+## D6. The writer works word by word, like a person
+
+**Decision.** Instead of laying out the whole text as a block and then drawing it, the
+writer puts down one word at a time. Before each word it looks at its current situation
+(where the pen is, how much room is left on the line, how far the writing has drifted from
+the ruled line, how tired the hand is) and decides what to do. After each word it updates
+that situation. Text can be fed in a word, a sentence or a page at a time.
+
+**Why.** Real handwriting is shaped by reacting as you go. You notice the line drifting and
+pull back to it, squeeze the last word in before the margin or give up and start a new
+line, write smaller and faster as you tire, slope downhill toward the end of a line. A
+block layout fits text perfectly, which is exactly what makes it look fake. Doing it
+incrementally also means the strokes are recorded in writing order, so later the renderer
+can replay them (ink running low, smudges) and we can animate the page being written.
+
+**Cost.** Some decisions a block layout makes easily (balanced lines, never running out of
+room) become harder. That is acceptable: people do not balance their lines either.
+
+**Proposed by Raphael**, replacing the original block layout.

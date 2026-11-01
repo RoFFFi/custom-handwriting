@@ -4,10 +4,11 @@ import com.handwriting.core.glyph.GlyphKey;
 import java.util.List;
 
 /**
- * Layout is a tree of boxes (the same idea TeX uses). Plain text is just a vertical list of
- * lines, each a horizontal list of glyphs and gaps. Building on a tree from day one is what
- * lets math slot in later: a fraction is a box holding two boxes stacked around a rule, an
- * exponent is a small raised box. See docs/DECISIONS.md, D5.
+ * The shape of one unit the writer is about to put down: a word now, a math expression
+ * later. It is a tree of boxes (the same idea TeX uses): a word is a row of glyphs; a fraction
+ * is a column of numerator, rule and denominator; an exponent is a small raised box. The
+ * writer places each unit on the page one at a time (D6); the tree only describes the unit's
+ * inner shape. See docs/DECISIONS.md, D5.
  */
 public sealed interface Box permits Box.Glyph, Box.Gap, Box.Row, Box.Column {
 

@@ -26,6 +26,8 @@ Weeks are a guide, not a deadline: move on when the milestone works, not when th
 
 ## Week 2: Capture sheets
 
+- [ ] Learn from existing pages: transcribe the Music Hum journals and measure slant, size, spacing, line drift and word gaps from them (no template needed)
+
 - [ ] Decide the character set: a-z, A-Z, 0-9, punctuation, plus a first list of clusters (th, he, in, er, an, ing, ll, ss, tt, oo)
 - [ ] Generate printable template sheets (PDF or 300 dpi PNG) with corner markers, cells, baseline and x-height guides
 - [ ] Each key appears 3 to 5 times across sheets; record the layout as `TemplateSheet` JSON next to the image
@@ -39,7 +41,7 @@ Weeks are a guide, not a deadline: move on when the milestone works, not when th
 - [ ] Cut each cell, separate ink from paper (adaptive threshold), remove guide lines
 - [ ] Thin the ink to a skeleton and trace it into ordered strokes; measure ink width along each
 - [ ] Normalize to glyph space using the printed baseline and x-height; compute metrics (advance, entry, exit)
-- [ ] Build a review sheet: all samples of each key side by side, so bad traces are easy to spot and drop
+- [ ] Build a review sheet: each trace drawn over its photo, so tracing errors (picked-up rule lines, split loops) are easy to spot and fix. Messy letters are real variation and always stay.
 
 **Done when:** the debug renderer draws your own letters from your own photos.
 
@@ -47,8 +49,9 @@ Weeks are a guide, not a deadline: move on when the milestone works, not when th
 
 - [ ] Implement `ClusterTokenizer` (random choice between clusters and single letters, weighted toward clusters)
 - [ ] Implement `VariationModel` v1: per-glyph scale, slant and rotation jitter from `StyleParams`
-- [ ] Implement layout: words into rows, line breaking inside a `WritingArea`, word spacing jitter
-- [ ] Implement `DefaultSynthesizer` and an app `write` command that outputs a white page PNG
+- [ ] Implement `IncrementalWriter`: plan, look, adjust, commit for each word, updating `WriterState`
+- [ ] Writer reactions v1: new line when a word will not fit, squeeze near the margin, gradual baseline drift and correction
+- [ ] App `write` command that outputs a white lined page PNG, plus a debug option that saves one frame per word
 - [ ] Estimate `StyleParams` (x-height, slant, spacing) from the captured samples instead of guessing
 
 **Done when:** a paragraph you type comes out in your handwriting on a white page, different on every seed.
@@ -68,7 +71,7 @@ Weeks are a guide, not a deadline: move on when the milestone works, not when th
 - [ ] Detect ruling: blank, lined, grid or dot, plus pitch and offset (use `samples/pages/` as test photos)
 - [ ] Estimate illumination of the bare paper
 - [ ] `Compositor` v1: warp the ink layer into the photo and multiply-blend with lighting
-- [ ] Writing area from ruling: baselines land on lines or grid rows, sensible margins
+- [ ] Build the `Sheet` from the analysis: ruled lines, margins, areas already inked
 
 **Done when:** text appears on the sample notebook photo, following the grid and the camera angle.
 
@@ -76,7 +79,7 @@ Weeks are a guide, not a deadline: move on when the milestone works, not when th
 
 - [ ] Joining: connect exit to entry between letters where the writer joins
 - [ ] VariationModel v2: smooth elastic deformation and slight tremor
-- [ ] Line and page drift: baseline wander, slope, gradual size and slant change, tighter letters near the right margin
+- [ ] Writer reactions v2: fatigue over the page, lines trailing off downhill, size creep, crossed-out words
 - [ ] Compositor v2: match photo blur, noise, colour cast and JPEG softness
 - [ ] Page curl near spiral bindings: mesh warp instead of a single homography
 - [ ] Blind test: mix real and generated lines, see if someone can pick them out
