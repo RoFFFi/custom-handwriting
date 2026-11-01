@@ -93,3 +93,32 @@ can replay them (ink running low, smudges) and we can animate the page being wri
 room) become harder. That is acceptable: people do not balance their lines either.
 
 **Proposed by Raphael**, replacing the original block layout.
+
+---
+
+## D7. Built for any writer, learning from pages they already wrote
+
+**Decision.** The tool learns anyone's handwriting, not one person's. The main way in is
+uploading existing handwritten pages (assignments, notes, journals) with the text they say.
+The tool then tracks a confidence for every letter and cluster, shows the writer which ones
+are weak or missing, and generates a short passage that targets exactly those, for the
+writer to copy by hand and upload. Repeat until confidence is good enough.
+
+**Why.** It asks the least of the writer: most people already have pages of their own
+writing, and natural writing is more realistic than careful copying. The gap-filling
+passage keeps the copying short and aimed only at what is missing (rare letters like q, z,
+x, j barely appear in normal text).
+
+**Consequences.**
+- Transcripts are the key input. At first they are typed; later the tool suggests them with
+  handwriting recognition and the writer confirms (reading messy writing is error prone, so
+  a person stays in the loop).
+- Nothing may be tuned to one writer: the project keeps at least two test writers, including
+  someone whose writing is more cursive.
+- Printed template sheets with boxes (the original week 2 plan) are dropped.
+
+**Consent.** Learning from photos of pages means the tool could be pointed at someone else's
+writing. The tool is meant for writers learning their own handwriting, and the onboarding
+is designed around the writer uploading and confirming their own pages.
+
+**Proposed by Raphael.**

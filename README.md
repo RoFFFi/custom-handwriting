@@ -8,9 +8,10 @@ result looks written by hand: messy, varied, on a realistic page. Math comes lat
 
 ## How it will work
 
-1. **Capture.** Print a template sheet, fill it in with one pen, photograph it. The tool
-   traces every letter and common letter cluster (`th`, `ing`, `ll`, ...) into strokes.
-   Do this once per pen: each writer and pen pair is a separate *hand*.
+1. **Learn.** Upload photos of pages you already wrote, with the text they say. The tool
+   learns your letters, common clusters (`th`, `ing`, ...) and whole words, shows how confident
+   it is about each, and asks you to hand-write a short passage covering only what is missing.
+   Each writer and pen pair is a separate *hand*.
 2. **Choose a page.** Photograph the paper you want written on (lined, grid, blank).
 3. **Write.** Type the text. The tool picks your real letters and clusters at random,
    varies each one within your natural range, lays them out on the page's lines, renders
@@ -55,8 +56,10 @@ scripts/    helper scripts (GitHub setup)
 - When a choice shapes the project, add an entry to `docs/DECISIONS.md`.
 - Never use `Math.random()`: take an `Rng` parameter (see D4).
 
-## Privacy
+## Privacy and consent
 
 Handwriting is personal data, and a generator of someone's handwriting can be misused.
-Keep the repository private, keep real captured hands out of public places, and only
-generate handwriting for people who have agreed to it.
+This repository holds code only: real pages, transcripts and captured hands live in the
+git-ignored `data/` and `profiles/` folders and are never committed. Only
+generate handwriting for people who have agreed to it. The tool is meant for writers
+learning their own handwriting, not for imitating someone else's.

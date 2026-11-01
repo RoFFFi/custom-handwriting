@@ -4,8 +4,8 @@
 
 ```
  YOUR HANDWRITING                         THE PAGE                 THE TEXT
- (photos of filled                        (photo of the paper      "Dear Sam, ..."
-  capture sheets, per pen)                 you want written on)        |
+ (photos of pages you                     (photo of the paper      "Dear Sam, ..."
+  already wrote + transcripts)             you want written on)        |
         |                                        |                     |
      capture                                   page                  synth
         |                                   (analyze)                  |
@@ -30,7 +30,7 @@
 | Module    | Job | Depends on |
 |-----------|-----|------------|
 | `core`    | Shared vocabulary: strokes, glyphs, hands, pens, `Rng`, `InkDocument`. No third party libraries. | nothing |
-| `capture` | Learn a hand: template sheets, photo to glyph samples. | core |
+| `capture` | Learn a hand from uploaded pages: transcripts, coverage and confidence, photo to words to strokes. | core |
 | `synth`   | The writer: puts text down word by word, reacting to what is already on the page (drift, margins, fatigue). | core |
 | `render`  | Decide what the ink looks like: pen physics, line width, texture. Output is a flat transparent layer. | core |
 | `page`    | Two jobs. Before writing: read the paper photo and describe the sheet (size, lines, margins, existing ink). After rendering: blend the ink into the photo. | core, render |

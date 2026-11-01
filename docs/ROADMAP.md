@@ -24,26 +24,28 @@ Weeks are a guide, not a deadline: move on when the milestone works, not when th
 
 **Done when:** you can run one command and open a PNG showing a word built from hand-made strokes.
 
-## Week 2: Capture sheets
+## Week 2: Pages and transcripts
 
-- [ ] Learn from existing pages: transcribe the Music Hum journals and measure slant, size, spacing, line drift and word gaps from them (no template needed)
+- [ ] Define the transcript format (docs/DATA_FORMATS.md) as a `PageTranscript` model in capture, with a loader and tests
+- [ ] Transcribe test writer 1 (Raphael): Journal 1, then Journal 3, then Journal 5, into `data/writers/raphael/transcripts/`
+- [ ] Coverage report v1: per writer, count every letter, capital, digit, punctuation mark and common cluster across all transcripts; list what is well covered, thin and missing
+- [ ] Gap-filling passage v1: generate a short text that uses the thin and missing letters and clusters, for the writer to copy by hand and upload
+- [ ] Add test writer 2 (a friend, or pages from the IAM Handwriting Database) so nothing gets tuned to one person
+- [ ] Measure habits from whole pages: line spacing, word gaps, slant, line drift and slope, margin behaviour
 
-- [ ] Decide the character set: a-z, A-Z, 0-9, punctuation, plus a first list of clusters (th, he, in, er, an, ing, ll, ss, tt, oo)
-- [ ] Generate printable template sheets (PDF or 300 dpi PNG) with corner markers, cells, baseline and x-height guides
-- [ ] Each key appears 3 to 5 times across sheets; record the layout as `TemplateSheet` JSON next to the image
-- [ ] Fill in the sheets by hand with your first pen and photograph them
-
-**Done when:** you have printed, filled and photographed a full set for one pen.
+**Done when:** one command on a writer's transcripts prints their coverage and a passage that fills the gaps.
 
 ## Week 3: Photo to strokes
 
-- [ ] Add OpenCV; detect the corner markers and flatten the photo to the sheet's mm space
-- [ ] Cut each cell, separate ink from paper (adaptive threshold), remove guide lines
+- [ ] Add OpenCV; find the page in the photo and flatten it to page space
+- [ ] Separate ink from paper despite shadows; remove ruled lines and show-through from the back of the page
+- [ ] Find text lines, split them into words at the gaps, pair each word with its transcript word and report mismatches
+- [ ] Split each word into letters and clusters, guided by the transcript (keep merged shapes like a writer's "the" whole)
 - [ ] Thin the ink to a skeleton and trace it into ordered strokes; measure ink width along each
-- [ ] Normalize to glyph space using the printed baseline and x-height; compute metrics (advance, entry, exit)
+- [ ] Confidence v2: score each letter and cluster by sample count and trace quality, not just counts
 - [ ] Build a review sheet: each trace drawn over its photo, so tracing errors (picked-up rule lines, split loops) are easy to spot and fix. Messy letters are real variation and always stay.
 
-**Done when:** the debug renderer draws your own letters from your own photos.
+**Done when:** the debug renderer draws letters and words cut from your own journal photos.
 
 ## Week 4: First real writing (on white)
 
@@ -91,6 +93,8 @@ Weeks are a guide, not a deadline: move on when the milestone works, not when th
 - [ ] Capture a second pen; confirm the two hands look different
 - [ ] Pool shared habits across a writer's hands when a pen has few samples
 - [ ] Graceful handling of missing characters (fallback glyphs, warnings)
+- [ ] Automatic transcript suggestion for uploaded pages (handwriting recognition), which the writer confirms or corrects
+- [ ] Onboarding flow: upload pages, confirm transcripts, see confidence, write the gap-filling passage
 - [ ] Optional: small JavaFX or web UI for upload page, choose hand, type text, preview
 
 **Done when:** you can pick between two pens and the output matches each.
