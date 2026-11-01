@@ -1,0 +1,29 @@
+# Gradle / build
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+.kotlin/
+
+# IDEs
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/
+bin/
+out/
+
+# OS
+.DS_Store
+
+# Personal data: captured hands and generated output stay local
+profiles/
+output/
+*.heic
+*.HEIC
+
+# Python research
+research/.venv/
+research/**/__pycache__/
+research/**/.ipynb_checkpoints/

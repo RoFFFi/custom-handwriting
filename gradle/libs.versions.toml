@@ -1,0 +1,19 @@
+# Single place for every dependency version. Add new libraries here first,
+# then reference them in a module as libs.<name>.
+[versions]
+junit = "5.11.4"
+assertj = "3.27.3"
+jackson = "2.18.2"
+opencv = "4.9.0-0"
+
+[libraries]
+junit-bom = { module = "org.junit:junit-bom", version.ref = "junit" }
+junit-jupiter = { module = "org.junit.jupiter:junit-jupiter" }
+junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher" }
+assertj = { module = "org.assertj:assertj-core", version.ref = "assertj" }
+
+# Not used yet. Planned in docs/ROADMAP.md:
+#   jackson  -> week 1, saving and loading hands as JSON
+#   opencv   -> week 3 and 6, photo rectification and page analysis
+jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson" }
+opencv = { module = "org.openpnp:opencv", version.ref = "opencv" }
