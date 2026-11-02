@@ -1,0 +1,11 @@
+# photo: page-01.jpg
+# writer: test-writer
+# pen: black-ballpoint
+# document: Invented journal, page 1
+
+Weather Journal
+Today the sky was grey and the wind
+was strong. I walked to the ~~shop~~ market.
+[box]FIRST NOTE[/box]
+
+The birds were _very_ quiet, I [wondred?] why.

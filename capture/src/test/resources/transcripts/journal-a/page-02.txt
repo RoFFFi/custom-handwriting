@@ -1,0 +1,8 @@
+# photo: page-02.jpg
+# writer: test-writer
+[drawing] North, South
+[table]
+Day | Rain
+Monday | ^none^
+[/table]
+[margin] see page 1
